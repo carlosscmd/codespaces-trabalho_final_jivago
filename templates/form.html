@@ -1,0 +1,29 @@
+<!-- templates/form.html -->
+{% extends "base.html" %}
+
+{% block conteudo %}
+<form class="formulario" method="post"
+      action="{% if livro %}/livros/{{ livro.id }}/editar{% else %}/livros{% endif %}">
+  <label>Título
+    <input type="text" name="titulo" value="{{ livro.titulo if livro else '' }}" required>
+  </label>
+  <label>Autor
+    <input type="text" name="autor" value="{{ livro.autor if livro else '' }}" required>
+  </label>
+  <label>Ano
+    <input type="number" name="ano" value="{{ livro.ano if livro else '' }}" required>
+  </label>
+  <label>Gênero
+    <input type="text" name="genero" value="{{ livro.genero if livro else '' }}" required>
+  </label>
+  <label>Nota
+    <input type="number" step="0.1" name="nota" value="{{ livro.nota if livro else 0 }}">
+  </label>
+  <label class="checkbox">
+    <input type="checkbox" name="lido" {% if livro and livro.lido %}checked{% endif %}>
+    lido
+  </label>
+  <button class="btn" type="submit">Salvar</button>
+</form>
+
+ {% endblock %}

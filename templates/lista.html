@@ -1,0 +1,27 @@
+<!-- templates/lista.html -->
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="grade">
+  {% for livro in livros %}
+  <article class="card">
+    <h2>{{ livro.titulo }}</h2>
+    <p class="meta">{{ livro.autor }} · {{ livro.ano }}</p>
+    <p class="genero">{{ livro.genero }}</p>
+    <p class="nota">⭐ {{ livro.nota }}</p>
+    <p class="status {{ 'lido' if livro.lido else 'nao-lido' }}">
+      {{ '✅ lido' if livro.lido else '⏳ Não lido' }}
+    </p>
+    <div class="acoes">
+      <a class="btn" href="/livros/{{ livro.id }}/editar">Editar</a>
+      <form action="/livros/{{ livro.id }}/excluir" method="post">
+        <button class="btn btn-perigo" type="submit">Excluir</button>
+      </form>
+    </div>
+  </article>
+  {% else %}
+  <p>Nenhum livro cadastrado ainda.</p>
+  {% endfor %}
+</div>
+{% endblock %}
+
