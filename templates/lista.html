@@ -10,7 +10,7 @@
     <p class="genero">{{ livro.genero.nome }}</p>
     <p class="nota">⭐ {{ livro.nota }}</p>
     <p class="status {{ 'lido' if livro.lido else 'nao-lido' }}">
-      {{ '✅ lido' if livro.lido else '⏳ Não lido' }}
+      {{ '✅ lido' if livro.lido else '​❌​ Não lido' }}
     </p>
     <div class="acoes">
       <a class="btn" href="/livros/{{ livro.id }}/editar">Editar</a>
