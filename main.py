@@ -30,18 +30,19 @@ def listar(request: Request, session: Session = Depends(get_session)):
 
 # CREATE — formulário vazio
 @app.get('/livros/novo')
-def form_novo(request: Request):
-    return templates.TemplateResponse(request, 'form.html', {'livro': None})
+def form_novo(request: Request, session: Session = Depends(get_session)):
+    generos = session.scalars(select(models.Genero)).all()
+    return templates.TemplateResponse(request, 'form.html', {'livro': None, 'generos': generos})
 
 # CREATE — grava no banco
 @app.post('/livros')
 def criar(
     titulo: str = Form(...), autor: str = Form(...), ano: int = Form(...),
-    genero: str = Form(...), nota: float = Form(0), lido: bool = Form(False),
+    genero_id: int = Form(...), nota: float = Form(0), lido: bool = Form(False),
     session: Session = Depends(get_session),
 ):
     livro = models.Livro(titulo=titulo, autor=autor, ano=ano,
-                         genero=genero, nota=nota, lido=lido)
+                         genero_id=genero_id, nota=nota, lido=lido)
     session.add(livro)
     session.commit()
     return RedirectResponse(url='/livros', status_code=303)
@@ -49,19 +50,20 @@ def criar(
 @app.get('/livros/{livro_id}/editar')
 def form_editar(livro_id: int, request: Request, session: Session = Depends(get_session)):
     livro = session.get(models.Livro, livro_id)
-    return templates.TemplateResponse(request, 'form.html', {'livro': livro})
+    generos = session.scalars(select(models.Genero)).all()
+    return templates.TemplateResponse(request, 'form.html', {'livro': livro, 'generos': generos})
 
 # UPDATE — salva as alterações
 @app.post('/livros/{livro_id}/editar')
 def atualizar(
     livro_id: int,
     titulo: str = Form(...), autor: str = Form(...), ano: int = Form(...),
-    genero: str = Form(...), nota: float = Form(0), lido: bool = Form(False),
+    genero_id: int = Form(...), nota: float = Form(0), lido: bool = Form(False),
     session: Session = Depends(get_session),
 ):
     livro = session.get(models.Livro, livro_id)
     livro.titulo, livro.autor, livro.ano = titulo, autor, ano
-    livro.genero, livro.nota, livro.lido = genero, nota, lido
+    livro.genero_id, livro.nota, livro.lido = genero_id, nota, lido
     session.commit()
     return RedirectResponse(url='/livros', status_code=303)
 

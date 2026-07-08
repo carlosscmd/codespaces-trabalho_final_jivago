@@ -14,14 +14,20 @@
     <input type="number" name="ano" value="{{ livro.ano if livro else '' }}" required>
   </label>
   <label>Gênero
-    <input type="text" name="genero" value="{{ livro.genero if livro else '' }}" required>
-  </label>
+   <select name="genero_id" required>
+    {% for g in generos %}
+    <option value="{{ g.id }}"
+      {% if livro and livro.genero_id == g.id %}selected{% endif %}>
+      {{ g.nome }}
+    </option>
+    {% endfor %}
+  </select>
+</label>
   <label>Nota
     <input type="number" step="0.1" name="nota" value="{{ livro.nota if livro else 0 }}">
   </label>
   <label class="checkbox">
-    <input type="checkbox" name="lido" {% if livro and livro.lido %}checked{% endif %}>
-    lido
+    <input type="checkbox" name="lido" {% if livro and livro.lido %}checked{% endif %}>lido
   </label>
   <button class="btn" type="submit">Salvar</button>
 </form>

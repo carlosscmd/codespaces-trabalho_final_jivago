@@ -7,7 +7,7 @@
   <article class="card">
     <h2>{{ livro.titulo }}</h2>
     <p class="meta">{{ livro.autor }} · {{ livro.ano }}</p>
-    <p class="genero">{{ livro.genero }}</p>
+    <p class="genero">{{ livro.genero.nome }}</p>
     <p class="nota">⭐ {{ livro.nota }}</p>
     <p class="status {{ 'lido' if livro.lido else 'nao-lido' }}">
       {{ '✅ lido' if livro.lido else '⏳ Não lido' }}
