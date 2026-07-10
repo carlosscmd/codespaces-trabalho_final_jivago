@@ -27,11 +27,11 @@ Todas as informações são armazenadas no **Supabase (PostgreSQL)** e atualizad
 
 ### Página Inicial
 
-![Página Inicial](imagens/desktop-home.jpng)
+![Página Inicial](imagens/desktop-home.jpeg)
 
 ### Tela de Edição
 
-![Tela de Edição](imagens/desktop-editar.jpng)
+![Tela de Edição](imagens/desktop-editar.jpeg)
 
 ---
 
@@ -39,12 +39,11 @@ Todas as informações são armazenadas no **Supabase (PostgreSQL)** e atualizad
 
 ### Página Inicial
 
-![Mobile 1](imagens/mobile-home-.jpng)
+![Mobile 1](imagens/mobile-home.jpeg)
 
 ### Tela de Edição
 
-![Mobile 2](imagens/mobile-editar.jpng)
-
+![Mobile 2](imagens/mobile-editar.jpeg)
 ---
 
 #  Funcionalidades
@@ -113,31 +112,31 @@ Este projeto foi desenvolvido com o objetivo de:
 
 ```
  catalogo-livros
+├── imagens/
+│   ├── desktop-home.jpng
+│   ├── desktop-editar.jpng
+│   ├── mobile-editar.jpng
+│   └── mobile-home-jpng
 │
 ├── static/
 │   └── style.css
 │
 ├── templates/
 │   ├── base.html
+│   |── form.html
 │   ├── lista.html
-│   └── form.html
+|
 │
-├── imagens/
-│   ├── desktop-home.png
-│   ├── desktop-editar.png
-│   ├── mobile-home-1.png
-│   └── mobile-home-2.png
 │
-├── models.py
 ├── database.py
 ├── main.py
-├── requirements.txt
+├── models.py
 └── README.md
 ```
 
 ---
 
-# 👥 Integrantes
+# Integrantes
 Carlos Eduardo Cruz da Costa
 Victor Emanoel Oliveira Lopes
 Cleiton Nacimento Rodrigues jr
