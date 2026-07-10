@@ -1,4 +1,4 @@
-# 📚Catálogo de Livros
+# Catálogo de Livros
 
 Uma aplicação web desenvolvida para gerenciar uma coleção de livros, permitindo cadastrar, visualizar, editar e excluir livros de forma simples e intuitiva.
 
